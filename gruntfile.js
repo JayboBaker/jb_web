@@ -15,7 +15,7 @@ module.exports = function(grunt) {
     * ==========================================================================
     */
     zetzer: {
-      main: {
+      dev: {
         options: {
           env: {
             title: "James Baker Web Development",
@@ -24,6 +24,28 @@ module.exports = function(grunt) {
           templates: "dev/templates",
           dot_template_settings: {
             strip: false // Stops minification of html
+          }
+        },
+        files: [
+          {
+            expand: true,
+            cwd: "dev/",
+            src: ["**/*.html", "!partials/**/*.html"],
+            dest: "dist/",
+            ext: ".html",
+
+          }
+        ]
+      },
+      build: {
+        options: {
+          env: {
+            title: "James Baker Web Development",
+          },
+          partials: "dev/partials",
+          templates: "dev/templates",
+          dot_template_settings: {
+            strip: true // Stops minification of html
           }
         },
         files: [
@@ -217,6 +239,26 @@ module.exports = function(grunt) {
 
     /*
     * 
+    * Compress files into gzips
+    * 
+    * ==========================================================================
+    */
+    compress: {
+      main: {
+        
+        expand: true,
+        cwd: 'dist/',
+        src: ['**/*', '!img/**/*'],
+        dest: 'dist/',
+        options: {
+          mode: 'deflate'
+        }
+      }
+    },
+
+
+    /*
+    * 
     * Main watch task for development
     * ==========================================================================
     */
@@ -226,7 +268,7 @@ module.exports = function(grunt) {
       }, 
       html: {
         files: ['dev/**/*.html'],
-        tasks: ['zetzer'],
+        tasks: ['zetzer:dev'],
         options: {
           livereload: true
         }    
@@ -288,6 +330,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy'); 
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-autoprefixer');
+  grunt.loadNpmTasks('grunt-contrib-compress');
  
   
   
@@ -298,7 +341,7 @@ module.exports = function(grunt) {
   */
 
   grunt.registerTask('build_dev', ['zetzer', 'uglify:dev', 'sprite', 'sass:dev', 'copy']);
-  grunt.registerTask('build_prod', ['clean', 'zetzer', 'uglify:build', 'sprite', 'sass:build', 'autoprefixer', 'copy']);
+  grunt.registerTask('build_prod', ['clean', 'zetzer:build', 'uglify:build', 'sprite', 'sass:build', 'autoprefixer', 'copy']);
   
   // Run watch before server for LiveReload
   grunt.registerTask('server', ['build_dev', 'express', 'open', 'express-keepalive']);
