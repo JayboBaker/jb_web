@@ -39,8 +39,10 @@ section.module.parallax {
 // }
 section.module.parallax-1 {
 
-  background-image: url("../img/main-image.jpg");
-
+  background-image: url("../img/main-image-mobile.jpg");
+  @media ($tablet-min) {
+    background-image: url("../img/main-image-desktop.jpg"); 
+  }
 }
 // section.module.parallax-2 {
 //   background-image: url("../img/demo/_small/2.jpg");
