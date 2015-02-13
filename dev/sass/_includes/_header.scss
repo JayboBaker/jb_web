@@ -16,6 +16,10 @@ header {
 	}
 	nav {
 		overflow-y: scroll;
+		@media (min-height : 430px) {
+			overflow-y: hidden;
+		}
+		
 		ul {
 			margin-top: 0;
 			@media ($tablet-min) { 
