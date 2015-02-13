@@ -196,6 +196,27 @@ module.exports = function(grunt) {
 
     /*
     * 
+    * Clean removes all files and folders from specified directory
+    * Be sure to stop all other tasks before running this
+    * ==========================================================================
+    */
+    autoprefixer: {
+      options: {
+        // Task-specific options go here. 
+      },
+       // prefix the specified file 
+      single_file: {
+        options: {
+          // Target-specific options go here. 
+        },
+        src: 'dist/css/main.css',
+        dest: 'dist/css/main.css'
+      },
+    },
+
+
+    /*
+    * 
     * Main watch task for development
     * ==========================================================================
     */
@@ -234,7 +255,7 @@ module.exports = function(grunt) {
       },
       css: {
         files: ['dev/sass/**/*.scss'],
-        tasks: ['sass:dev'],
+        tasks: ['sass:dev', 'autoprefixer'],
         options: {
           livereload: true
         }
@@ -266,6 +287,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-express');  
   grunt.loadNpmTasks('grunt-contrib-copy'); 
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-autoprefixer');
  
   
   
@@ -276,7 +298,7 @@ module.exports = function(grunt) {
   */
 
   grunt.registerTask('build_dev', ['zetzer', 'uglify:dev', 'sprite', 'sass:dev', 'copy']);
-  grunt.registerTask('build_prod', ['clean', 'zetzer', 'uglify:build', 'sprite', 'sass:build', 'copy']);
+  grunt.registerTask('build_prod', ['clean', 'zetzer', 'uglify:build', 'sprite', 'sass:build', 'autoprefixer', 'copy']);
   
   // Run watch before server for LiveReload
   grunt.registerTask('server', ['build_dev', 'express', 'open', 'express-keepalive']);
