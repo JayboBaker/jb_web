@@ -82,11 +82,39 @@ Main content styles
 	}
 }
 
-.contact-form {
-	//text-align: center;
+
+.form-container {
+	position: relative;
+	@media ($tablet-min) { 
+		background-color: $base-brand-color;
+		@include border-radius(50%);
+		padding: 6em 20% 6em 20%;
+	}
+	&:after {
+
+		@media ($tablet-min) {
+		content: ' ';
+		position: absolute;
+		width: 0;
+		height: 0;
+		border: 80px solid;
+		border-color: $base-brand-color transparent transparent $base-brand-color;  
+		left: 20%;
+		}
+		
+	}
+
 	label {
 		display: none;
-	}
+	}	
+
+	label[for=check_human] {
+		display: inline-block;
+		padding-top: 20px;
+		padding-right: 10px;
+		vertical-align: top;
+		text-align: left;
+	} 
 	input {
 		width: 100%;
 		padding: $base-padding;
@@ -108,52 +136,35 @@ Main content styles
 		font-size: 1.2em;
 		font-weight: 600;
 		color: $second-font-color;
-		width: 50%;
+		width: 100%;
 		padding: $base-padding * 2;
+		display: block;
 		
 		&:hover,
-		&:active{
+		&:active,
+		&:focus {
 			color: $base-link-color;
 		}
 		@media ($tablet-min) { 
+			width: 50%;
 			color: $second-font-color;
 			&:hover,
-			&:active{
+			&:active,
+			&:focus {
 				border-color: $base-font-color;
 				color: $base-font-color;
 			}
 		}
 	}
-}
-.form-container {
-	position: relative;
-	@media ($tablet-min) { 
-		background-color: $base-brand-color;
-		@include border-radius(50%);
-		padding: 6em 20% 6em 20%;
+	input#check_human {
+		@include border-radius;
+		background-color: $base-bg-color;
+		display: inline-block;
+		width: 25px;
+		height: 25px
+		//margin-right: 100%;
 	}
-	&:after {
 
-		@media ($tablet-min) {
-		content: ' ';
-		position: absolute;
-		width: 0;
-		height: 0;
-		border: 80px solid;
-		border-color: $base-brand-color transparent transparent $base-brand-color;  
-		left: 20%;
-		}
-		
-	}
-	label[for=check_human] {
-		display: inline-block;
-		width: 10em;
-		text-align: left;
-	} 
-	#check_human {
-		display: inline-block;
-		margin-right: 100%;
-	}
 }
 
 .scroll-arrow {
@@ -329,7 +340,7 @@ Main content styles
 		.jquery-icon {
 			@extend .jquery-icon-2x;
 		}
-	}
+	} //end media tablet-min
 }
 .js-message {
 	color: $second-font-color;
