@@ -38,6 +38,7 @@ Main content styles
 	@extend %clearfix;
 	background-color: $second-bg-color;
 	color: $second-font-color;
+	display: none;
 	h2 {
 		@media ($tablet-min) { 
 			margin-bottom: 0;
