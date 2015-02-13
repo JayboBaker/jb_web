@@ -1,7 +1,9 @@
 /* =====================================================================
 Images/Icons Sprites
 ====================================================================== */
-@include sprites($spritesheet-sprites);
+// Variable names are set in gruntfile under 'sprites'
+@include sprites($logos-sprites);
+@include sprites($icons-sprites);
 
 /* ===========================================================
 Main content styles
@@ -286,14 +288,47 @@ Main content styles
 	}
 }
 .icon-container {
-
+	display: none;
 	
 	@media ($tablet-min){
+		display: block;
 		background-color: $base-bg-color;
 		-webkit-transform: translate(0, 85px) rotateX(-10deg);
 		   -moz-transform: translate(0, 85px) rotateX(-10deg);
 		    -ms-transform: translate(0, 85px) rotateX(-10deg);
 		        transform: translate(0, 85px) rotateX(-10deg);
+	
+		span {
+			display: inline-block;
+			max-width: 100%;
+		}
+		.css-icon {
+			@extend .css-icon-2x;
+		}
+		.html-icon {
+			@extend .html-icon-2x;
+		}
+		.js-icon {
+			@extend .js-icon-2x;
+		}
+		.xampp-icon {
+			@extend .xampp-icon-2x;
+		}
+		.grunt-icon {
+			@extend .grunt-icon-2x;
+		}
+		.sass-icon {
+			@extend .sass-icon-2x;
+		}
+		.bootstrap-icon {
+			@extend .bootstrap-icon-2x;
+		}
+		.php-icon {
+			@extend .php-icon-2x;
+		}
+		.jquery-icon {
+			@extend .jquery-icon-2x;
+		}
 	}
 }
 .js-message {

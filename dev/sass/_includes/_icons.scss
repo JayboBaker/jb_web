@@ -99,11 +99,11 @@ $linkdin-total-width: 312px;
 $linkdin-total-height: 312px;
 $linkdin-image: '../../img/icons_sprite.png';
 $linkdin: 104px 208px -104px -208px 104px 104px 312px 312px '../../img/icons_sprite.png' 'linkdin';
-$spritesheet-width: 312px;
-$spritesheet-height: 312px;
-$spritesheet-image: '../../img/icons_sprite.png';
-$spritesheet-sprites: $facebook-hover $facebook $github-hover $github $google-hover $google $linkdin-hover $linkdin;
-$spritesheet: 312px 312px '../../img/icons_sprite.png' $spritesheet-sprites;
+$icons-width: 312px;
+$icons-height: 312px;
+$icons-image: '../../img/icons_sprite.png';
+$icons-sprites: $facebook-hover $facebook $github-hover $github $google-hover $google $linkdin-hover $linkdin;
+$icons: 312px 312px '../../img/icons_sprite.png' $icons-sprites;
 
 /*
 The provided mixins are intended to be used with the array-like variables
