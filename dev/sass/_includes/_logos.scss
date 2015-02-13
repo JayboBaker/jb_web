@@ -1,0 +1,169 @@
+/*
+SCSS variables are information about icon's compiled state, stored under its original file name
+
+.icon-home {
+  width: $icon-home-width;
+}
+
+The large array-like variables contain all information about a single icon
+$icon-home: x y offset_x offset_y width height total_width total_height image_path;
+
+At the bottom of this section, we provide information about the spritesheet itself
+$spritesheet: width height image $spritesheet-sprites;
+*/
+$bootstrap-icon-2x-name: 'bootstrap-icon-2x';
+$bootstrap-icon-2x-x: 0px;
+$bootstrap-icon-2x-y: 0px;
+$bootstrap-icon-2x-offset-x: 0px;
+$bootstrap-icon-2x-offset-y: 0px;
+$bootstrap-icon-2x-width: 500px;
+$bootstrap-icon-2x-height: 500px;
+$bootstrap-icon-2x-total-width: 1500px;
+$bootstrap-icon-2x-total-height: 1500px;
+$bootstrap-icon-2x-image: '../../img/logos_sprite.png';
+$bootstrap-icon-2x: 0px 0px 0px 0px 500px 500px 1500px 1500px '../../img/logos_sprite.png' 'bootstrap-icon-2x';
+$css-icon-2x-name: 'css-icon-2x';
+$css-icon-2x-x: 500px;
+$css-icon-2x-y: 0px;
+$css-icon-2x-offset-x: -500px;
+$css-icon-2x-offset-y: 0px;
+$css-icon-2x-width: 500px;
+$css-icon-2x-height: 500px;
+$css-icon-2x-total-width: 1500px;
+$css-icon-2x-total-height: 1500px;
+$css-icon-2x-image: '../../img/logos_sprite.png';
+$css-icon-2x: 500px 0px -500px 0px 500px 500px 1500px 1500px '../../img/logos_sprite.png' 'css-icon-2x';
+$grunt-icon-2x-name: 'grunt-icon-2x';
+$grunt-icon-2x-x: 0px;
+$grunt-icon-2x-y: 500px;
+$grunt-icon-2x-offset-x: 0px;
+$grunt-icon-2x-offset-y: -500px;
+$grunt-icon-2x-width: 500px;
+$grunt-icon-2x-height: 500px;
+$grunt-icon-2x-total-width: 1500px;
+$grunt-icon-2x-total-height: 1500px;
+$grunt-icon-2x-image: '../../img/logos_sprite.png';
+$grunt-icon-2x: 0px 500px 0px -500px 500px 500px 1500px 1500px '../../img/logos_sprite.png' 'grunt-icon-2x';
+$html-icon-2x-name: 'html-icon-2x';
+$html-icon-2x-x: 500px;
+$html-icon-2x-y: 500px;
+$html-icon-2x-offset-x: -500px;
+$html-icon-2x-offset-y: -500px;
+$html-icon-2x-width: 500px;
+$html-icon-2x-height: 500px;
+$html-icon-2x-total-width: 1500px;
+$html-icon-2x-total-height: 1500px;
+$html-icon-2x-image: '../../img/logos_sprite.png';
+$html-icon-2x: 500px 500px -500px -500px 500px 500px 1500px 1500px '../../img/logos_sprite.png' 'html-icon-2x';
+$jquery-icon-2x-name: 'jquery-icon-2x';
+$jquery-icon-2x-x: 0px;
+$jquery-icon-2x-y: 1000px;
+$jquery-icon-2x-offset-x: 0px;
+$jquery-icon-2x-offset-y: -1000px;
+$jquery-icon-2x-width: 500px;
+$jquery-icon-2x-height: 500px;
+$jquery-icon-2x-total-width: 1500px;
+$jquery-icon-2x-total-height: 1500px;
+$jquery-icon-2x-image: '../../img/logos_sprite.png';
+$jquery-icon-2x: 0px 1000px 0px -1000px 500px 500px 1500px 1500px '../../img/logos_sprite.png' 'jquery-icon-2x';
+$js-icon-2x-name: 'js-icon-2x';
+$js-icon-2x-x: 1000px;
+$js-icon-2x-y: 0px;
+$js-icon-2x-offset-x: -1000px;
+$js-icon-2x-offset-y: 0px;
+$js-icon-2x-width: 500px;
+$js-icon-2x-height: 500px;
+$js-icon-2x-total-width: 1500px;
+$js-icon-2x-total-height: 1500px;
+$js-icon-2x-image: '../../img/logos_sprite.png';
+$js-icon-2x: 1000px 0px -1000px 0px 500px 500px 1500px 1500px '../../img/logos_sprite.png' 'js-icon-2x';
+$php-icon-2x-name: 'php-icon-2x';
+$php-icon-2x-x: 1000px;
+$php-icon-2x-y: 500px;
+$php-icon-2x-offset-x: -1000px;
+$php-icon-2x-offset-y: -500px;
+$php-icon-2x-width: 500px;
+$php-icon-2x-height: 500px;
+$php-icon-2x-total-width: 1500px;
+$php-icon-2x-total-height: 1500px;
+$php-icon-2x-image: '../../img/logos_sprite.png';
+$php-icon-2x: 1000px 500px -1000px -500px 500px 500px 1500px 1500px '../../img/logos_sprite.png' 'php-icon-2x';
+$sass-icon-2x-name: 'sass-icon-2x';
+$sass-icon-2x-x: 500px;
+$sass-icon-2x-y: 1000px;
+$sass-icon-2x-offset-x: -500px;
+$sass-icon-2x-offset-y: -1000px;
+$sass-icon-2x-width: 500px;
+$sass-icon-2x-height: 500px;
+$sass-icon-2x-total-width: 1500px;
+$sass-icon-2x-total-height: 1500px;
+$sass-icon-2x-image: '../../img/logos_sprite.png';
+$sass-icon-2x: 500px 1000px -500px -1000px 500px 500px 1500px 1500px '../../img/logos_sprite.png' 'sass-icon-2x';
+$xampp-icon-2x-name: 'xampp-icon-2x';
+$xampp-icon-2x-x: 1000px;
+$xampp-icon-2x-y: 1000px;
+$xampp-icon-2x-offset-x: -1000px;
+$xampp-icon-2x-offset-y: -1000px;
+$xampp-icon-2x-width: 500px;
+$xampp-icon-2x-height: 500px;
+$xampp-icon-2x-total-width: 1500px;
+$xampp-icon-2x-total-height: 1500px;
+$xampp-icon-2x-image: '../../img/logos_sprite.png';
+$xampp-icon-2x: 1000px 1000px -1000px -1000px 500px 500px 1500px 1500px '../../img/logos_sprite.png' 'xampp-icon-2x';
+$logos-width: 1500px;
+$logos-height: 1500px;
+$logos-image: '../../img/logos_sprite.png';
+$logos-sprites: $bootstrap-icon-2x $css-icon-2x $grunt-icon-2x $html-icon-2x $jquery-icon-2x $js-icon-2x $php-icon-2x $sass-icon-2x $xampp-icon-2x;
+$logos: 1500px 1500px '../../img/logos_sprite.png' $logos-sprites;
+
+/*
+The provided mixins are intended to be used with the array-like variables
+
+.icon-home {
+  @include sprite-width($icon-home);
+}
+
+.icon-email {
+  @include sprite($icon-email);
+}
+*/
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+/*
+The `sprites` mixin generates identical output to the CSS template
+  but can be overridden inside of SCSS
+
+@include sprites($spritesheet-sprites);
+*/
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite($sprite);
+    }
+  }
+}
