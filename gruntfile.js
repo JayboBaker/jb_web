@@ -281,5 +281,5 @@ module.exports = function(grunt) {
   // Run watch before server for LiveReload
   grunt.registerTask('server', ['build_dev', 'express', 'open', 'express-keepalive']);
   
-  grunt.registerTask('default', ['watch']);
+  grunt.registerTask('default', ['build_dev', 'watch']);
 };
