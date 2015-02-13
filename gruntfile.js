@@ -133,15 +133,17 @@ module.exports = function(grunt) {
       //   destCss: 'dev/sass/_includes/_icons.scss'
       // },
       icons: {
-        src: 'dev/img/sprites/icons**/*.png',
+        src: 'dev/img/sprites/icons/**/*.png',
         dest: 'dev/img/icons_sprite.png',
-        destCss: 'dev/sass/_includes/sprites/_icons.scss'
+        destCss: 'dev/sass/_includes/_icons.scss',
+        cssSpritesheetName: 'icons'
       },
-      // logos: {
-      //   src: 'dev/img/sprites/logos**/*.png',
-      //   dest: 'dev/img/icons_sprite.png',
-      //   destCss: 'dev/sass/_includes/_logos.scss'
-      // },
+      logos: {
+        src: 'dev/img/sprites/logos/**/*.png',
+        dest: 'dev/img/logos_sprite.png',
+        destCss: 'dev/sass/_includes/_logos.scss',
+        cssSpritesheetName: 'logos'
+      },
     },
 
 
