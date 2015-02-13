@@ -1,0 +1,158 @@
+/*
+SCSS variables are information about icon's compiled state, stored under its original file name
+
+.icon-home {
+  width: $icon-home-width;
+}
+
+The large array-like variables contain all information about a single icon
+$icon-home: x y offset_x offset_y width height total_width total_height image_path;
+
+At the bottom of this section, we provide information about the spritesheet itself
+$spritesheet: width height image $spritesheet-sprites;
+*/
+$facebook-hover-name: 'facebook-hover';
+$facebook-hover-x: 0px;
+$facebook-hover-y: 0px;
+$facebook-hover-offset-x: 0px;
+$facebook-hover-offset-y: 0px;
+$facebook-hover-width: 104px;
+$facebook-hover-height: 104px;
+$facebook-hover-total-width: 312px;
+$facebook-hover-total-height: 312px;
+$facebook-hover-image: '../../img/icons_sprite.png';
+$facebook-hover: 0px 0px 0px 0px 104px 104px 312px 312px '../../img/icons_sprite.png' 'facebook-hover';
+$facebook-name: 'facebook';
+$facebook-x: 104px;
+$facebook-y: 0px;
+$facebook-offset-x: -104px;
+$facebook-offset-y: 0px;
+$facebook-width: 104px;
+$facebook-height: 104px;
+$facebook-total-width: 312px;
+$facebook-total-height: 312px;
+$facebook-image: '../../img/icons_sprite.png';
+$facebook: 104px 0px -104px 0px 104px 104px 312px 312px '../../img/icons_sprite.png' 'facebook';
+$github-hover-name: 'github-hover';
+$github-hover-x: 0px;
+$github-hover-y: 104px;
+$github-hover-offset-x: 0px;
+$github-hover-offset-y: -104px;
+$github-hover-width: 104px;
+$github-hover-height: 104px;
+$github-hover-total-width: 312px;
+$github-hover-total-height: 312px;
+$github-hover-image: '../../img/icons_sprite.png';
+$github-hover: 0px 104px 0px -104px 104px 104px 312px 312px '../../img/icons_sprite.png' 'github-hover';
+$github-name: 'github';
+$github-x: 104px;
+$github-y: 104px;
+$github-offset-x: -104px;
+$github-offset-y: -104px;
+$github-width: 104px;
+$github-height: 104px;
+$github-total-width: 312px;
+$github-total-height: 312px;
+$github-image: '../../img/icons_sprite.png';
+$github: 104px 104px -104px -104px 104px 104px 312px 312px '../../img/icons_sprite.png' 'github';
+$google-hover-name: 'google-hover';
+$google-hover-x: 0px;
+$google-hover-y: 208px;
+$google-hover-offset-x: 0px;
+$google-hover-offset-y: -208px;
+$google-hover-width: 104px;
+$google-hover-height: 104px;
+$google-hover-total-width: 312px;
+$google-hover-total-height: 312px;
+$google-hover-image: '../../img/icons_sprite.png';
+$google-hover: 0px 208px 0px -208px 104px 104px 312px 312px '../../img/icons_sprite.png' 'google-hover';
+$google-name: 'google';
+$google-x: 208px;
+$google-y: 0px;
+$google-offset-x: -208px;
+$google-offset-y: 0px;
+$google-width: 104px;
+$google-height: 104px;
+$google-total-width: 312px;
+$google-total-height: 312px;
+$google-image: '../../img/icons_sprite.png';
+$google: 208px 0px -208px 0px 104px 104px 312px 312px '../../img/icons_sprite.png' 'google';
+$linkdin-hover-name: 'linkdin-hover';
+$linkdin-hover-x: 208px;
+$linkdin-hover-y: 104px;
+$linkdin-hover-offset-x: -208px;
+$linkdin-hover-offset-y: -104px;
+$linkdin-hover-width: 104px;
+$linkdin-hover-height: 104px;
+$linkdin-hover-total-width: 312px;
+$linkdin-hover-total-height: 312px;
+$linkdin-hover-image: '../../img/icons_sprite.png';
+$linkdin-hover: 208px 104px -208px -104px 104px 104px 312px 312px '../../img/icons_sprite.png' 'linkdin-hover';
+$linkdin-name: 'linkdin';
+$linkdin-x: 104px;
+$linkdin-y: 208px;
+$linkdin-offset-x: -104px;
+$linkdin-offset-y: -208px;
+$linkdin-width: 104px;
+$linkdin-height: 104px;
+$linkdin-total-width: 312px;
+$linkdin-total-height: 312px;
+$linkdin-image: '../../img/icons_sprite.png';
+$linkdin: 104px 208px -104px -208px 104px 104px 312px 312px '../../img/icons_sprite.png' 'linkdin';
+$spritesheet-width: 312px;
+$spritesheet-height: 312px;
+$spritesheet-image: '../../img/icons_sprite.png';
+$spritesheet-sprites: $facebook-hover $facebook $github-hover $github $google-hover $google $linkdin-hover $linkdin;
+$spritesheet: 312px 312px '../../img/icons_sprite.png' $spritesheet-sprites;
+
+/*
+The provided mixins are intended to be used with the array-like variables
+
+.icon-home {
+  @include sprite-width($icon-home);
+}
+
+.icon-email {
+  @include sprite($icon-email);
+}
+*/
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+/*
+The `sprites` mixin generates identical output to the CSS template
+  but can be overridden inside of SCSS
+
+@include sprites($spritesheet-sprites);
+*/
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite($sprite);
+    }
+  }
+}

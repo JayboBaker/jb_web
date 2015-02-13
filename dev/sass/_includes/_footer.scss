@@ -1,0 +1,57 @@
+/* ===========================================================
+Footer styles
+============================================================*/
+
+footer {
+	border-top: $section-border;
+	background-color: $second-bg-color;
+	color: $second-font-color;
+	@extend %clearfix;
+	a {
+		color: $medium-gray;
+		@include transition(0.5s);
+		&:hover,
+		&:active {
+			color: $third-hover-link-color;
+		}
+	}
+	p {
+		margin-top: $base-margin;
+		width: 60%;
+		display: inline-block;
+		@media ($tablet-min) {
+			display: block;
+		}
+		clear: left;
+	}
+	.footer-nav {
+		
+		float: right;
+		display: inline-block;
+		ul {
+			@extend %clearfix;
+			width: 100%;
+			padding-left: 0;
+			float: right;
+			text-align: right;
+		}
+	}
+	.social {
+		@extend %clearfix;
+		margin: 0;
+		@media ($tablet-min) {
+			width: initial;
+			display: inline-block;
+		}
+		li {
+			@include scale(0.5);
+		}
+		a {
+			@media ($tablet-min) {
+				margin-left: -40px;
+			}
+		}
+		
+	}
+
+}

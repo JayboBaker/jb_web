@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "_default": {
+            "link": "jb_dev"
+        }, 
+        "jb_dev": {
+            "applicationId": "N9dC0iisJzlFvW0tcu8lk1seoqOGpc2RW5Zjl3R9", 
+            "masterKey": "FkbNDIezgIfrKSiyqhs7n3mwvese4nczkJbhgUVV"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.3.4"
+    }
+}

@@ -1,0 +1,179 @@
+/* ============================================================
+Header styles
+============================================================*/
+
+header {
+	background-color: $second-bg-color;
+	font-family: $header-font-family;
+	font-size: $header-font-size;
+	color: $header-font-color;
+	padding-top: $base-padding;
+	border-bottom: $section-border;
+	-webkit-font-smoothing: antialiased;
+	padding: $base-padding;
+	@media ($tablet-min) {
+		height: 100px;
+	}
+	nav {
+		overflow-y: scroll;
+		ul {
+			margin-top: 0;
+			@media ($tablet-min) { 
+				margin-top: 14px;
+			}
+		}
+	}
+	a {
+		@include transition(0.5s);
+		font-size: $header-font-size;
+		color: $second-font-color;
+		&:hover,
+		&:active {
+			color: $base-link-color;	
+		}
+	}
+
+	.main-menu {
+		position: fixed;
+		top: 0;
+		right: -250px;
+		width: 250px;
+		height: 100%;
+		background: $second-bg-color;
+		z-index: 100;
+		padding: $base-padding;
+		border-left: $section-border;
+		@media ($tablet-min) {
+			position: initial;
+			height: initial;
+			width: 100%;
+			right: initial;
+			display: inline;
+			padding: initial;
+			border-left: none;
+		}		
+	}
+
+	.main-menu h4 {
+		position: relative;
+		border-bottom: 4px solid $base-border-color;
+		line-height: $base-line-height;
+		margin-top: 18px;
+		font-weight: inherit;
+		@media ($tablet-min) { 
+			display: none;
+			margin-top: initial;
+		}
+	}
+	
+	.main-menu .menu-toggle {
+		@include transition(0.5s);
+		position: absolute;
+		top: 0;
+		right: 10px;
+		display: inline-block;
+		background: $second-bg-color;
+		color: $second-font-color;
+		text-decoration: none;
+		vertical-align: top;
+
+		&:hover {
+			color: $base-accent-color;	
+		}		
+	}
+
+	.main-menu ul {
+		list-style: none;
+		border-top: $base-border;
+		border-bottom: $base-border;
+		padding-left: 0;
+		@media ($tablet-min) { 
+			float: right;
+		}
+	}
+	.main-menu ul li {
+		border-top: $base-border;
+		border-bottom: $base-border;
+		@media ($tablet-min) { 
+			display: inline-block;
+		}
+	}
+	.main-menu ul li a {
+		@include transition(0.5s);
+		position: relative;
+		display: block;
+		padding: 6px 6px 1px 6px;
+		text-decoration: none;
+	}
+	.main-menu .nav-links li a:hover {
+		background: #000;
+	}
+	.menu-toggle {
+		float: right;
+		line-height: 0.7;
+		@media ($tablet-min) { 
+			display: none;
+		}
+	}
+
+	.main-logo {
+		display: inline-block;
+		font-size: $h3-font-size;
+		padding-top: $base-padding / 2;
+		span {
+			display: none;
+			@media ($tablet-min) { 
+				display: inline;
+			}
+		}
+	}
+
+	.menu-icon {
+		@include transition(0.5s); 
+		@include border-radius(1px);
+		position: relative;
+		padding-left: 1.25em;
+		padding-top: 18px;
+		height: 70px;
+		font-size: $h3-font-size;
+	}
+	.menu-icon:before {
+		@include transition(0.5s);
+		@include border-radius(1px);
+		content: "";
+		position: absolute;
+		left: 0;
+		width: 1em;
+		height: 5px;
+		background: $header-font-color;
+		box-shadow: 
+		0 10px 0 0  $header-font-color,
+		0 20px 0 0  $header-font-color;
+	}
+
+
+	.menu-icon:hover:before,
+	.menu-icon:active:before {
+		background: $base-link-color;
+		box-shadow: 
+		0 10px 0 0  $base-link-color,
+		0 20px 0 0  $base-link-color;
+	}
+
+	.social {
+		@extend %clearfix;
+		position: relative;
+		@media ($tablet-min) { 
+			display: none;
+			margin-top: initial;
+		}
+
+		li {
+			@include scale(0.5);
+			width: 50%;
+			display: block;
+			float: left;
+			position: relative;
+		}
+	}
+}

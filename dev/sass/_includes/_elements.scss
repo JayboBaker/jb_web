@@ -1,0 +1,40 @@
+/* ============================================================
+Base element styles
+=============================================================*/
+
+* {
+	@include box-sizing;
+
+}
+html,
+body {
+	background-color: $second-bg-color;
+}
+section {
+	display: none;
+	min-height: 50vh;
+	position: relative;
+	background-color: $base-bg-color;
+	padding-bottom: $base-padding * 15;
+	border-bottom: $section-border;
+	@media ($tablet-min) {
+			min-height: 80vh;
+	}
+}
+
+input, textarea {
+	@include border-radius;
+	border: 0;
+	color: $base-font-color;
+
+	&:focus {
+		outline-color: $base-accent-color;
+		@media ($tablet-min) {
+			outline-color: $second-bg-color;
+		}
+	}
+}
+
+footer {
+	display: none;
+}

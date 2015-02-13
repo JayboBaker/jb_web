@@ -1,0 +1,45 @@
+/* ============================================================
+Button styles
+============================================================ */
+.button-block {
+	text-align: center;
+}
+.button {
+	@include border-radius;
+	@include transition(0.5s);
+	display: inline-block;
+	width: 200px;
+	padding: $base-padding;
+	margin-top: $base-margin;
+	margin-bottom: $base-margin;
+	background-color: transparent;
+	border: $button-border;
+	text-align: center;
+	outline: none;
+	text-decoration: none;
+
+	&:hover,
+	&:active{
+		border-color: $base-accent-color;
+		color: $base-accent-color;
+	}
+}
+.big-button {
+	width: 90%;
+	border-color: $base-link-color;
+	color: $base-link-color;
+	padding-top: $base-padding * 3;
+	padding-bottom: $base-padding * 3;
+	font-size: 1.5em;
+	font-weight: 600;
+	@media ($tablet-min) {
+		width: 50%;
+	}
+	&:hover,
+	&:active{
+		border-color: $base-link-color;
+		color: $light-gray;
+		background-color:  $base-link-color;
+	}
+}
+
