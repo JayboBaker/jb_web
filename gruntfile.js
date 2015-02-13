@@ -1,11 +1,19 @@
 module.exports = function(grunt) {
 
-  // Configure task(s)
+  /*
+  * ==========================================================================
+  * Configure tasks
+  * ==========================================================================
+  */ 
   grunt.initConfig({
   	pkg: grunt.file.readJSON('package.json'),
   	
 
-    // Add ability to include partials
+    /*
+    * 
+    * Add ability to include partials
+    * ==========================================================================
+    */
     zetzer: {
       main: {
         options: {
@@ -30,8 +38,13 @@ module.exports = function(grunt) {
         ]
       },
     },
-
-    // Minifies and concatenates js files
+    
+    
+    /*
+    * 
+    * Minifies and concatenates js files
+    * ==========================================================================
+    */
     uglify: {
   		dev: {
   			options: {
@@ -51,7 +64,12 @@ module.exports = function(grunt) {
       }
   	},
 
-    // Compiles scss to css (Could be swapped out for compass plugin)
+    
+    /*
+    * 
+    * Compiles scss to css (Could be swapped out for compass plugin)
+    * ==========================================================================
+    */ 
   	sass: {
   		dev: {
   			options: {
@@ -71,23 +89,108 @@ module.exports = function(grunt) {
   		}
   	},
     
-    // Copies fonts files across
+    
+    /*
+    * 
+    * Copies required files/folders into dist
+    * ==========================================================================
+    */
     copy: {
       main: {
         files: [
           // flattens results to a single level 
           {expand: true, flatten: true, src: ['dev/fonts/**'], dest: 'dist/fonts/', filter: 'isFile'},
            // flattens results to a single level 
-          {expand: true, flatten: true, src: ['dev/img/**'], dest: 'dist/img/', filter: 'isFile'},
+          {expand: true, flatten: true, src: ['dev/img/**', '!dev/img/sprite/'], dest: 'dist/img/', filter: 'isFile'},
+        ],
+      },
+      images: {
+        files: [
+           // flattens results to a single level 
+          {expand: true, flatten: true, src: ['dev/img/**', '!dev/img/sprite/'], dest: 'dist/img/', filter: 'isFile'},
+        ],
+      },
+      fonts: {
+        files: [
+          // flattens results to a single level 
+          {expand: true, flatten: true, src: ['dev/fonts/**'], dest: 'dist/fonts/', filter: 'isFile'},
         ],
       },
     },
     
-    // Lints js files to check for errors
+
+    /*
+    * 
+    * Lints js files to check for errors
+    * ==========================================================================
+    */
     jshint: {
       all: ['dev/**/*.js']
     },
 
+
+    /*
+    *
+    * Compiles png in specified folder to spritesheet and produces necessary
+    * css for include into main scss file
+    * ==========================================================================
+    */
+    sprite:{
+      all: {
+        src: 'dev/img/sprites/**/*.png',
+        dest: 'dev/img/icons_sprite.png',
+        destCss: 'dev/sass/_includes/_icons.scss'
+      },
+    },
+
+
+    /*
+    * 
+    * grunt-express will serve the files from the folders listed in `bases`
+    * on specified `port` and `hostname`
+    * ==========================================================================
+    */
+    express: {
+      all: {
+        options: {
+          port: 9000,
+          hostname: "127.0.0.1",
+          bases: "dist",
+          livereload: true 
+        }
+      }
+    },
+ 
+    
+    /*
+    * 
+    * grunt-open will open your browser at the project's URL
+    * ==========================================================================
+    */
+    open: {
+      all: {
+        // Gets the port from the connect configuration
+        path: 'http://localhost:<%= express.all.options.port%>'
+      }
+    },
+
+
+    /*
+    * 
+    * Clean removes all files and folders from specified directory
+    * ==========================================================================
+    */
+    clean: {
+      build: ["dist"],
+      //release: ["path/to/another/dir/one", "path/to/another/dir/two"]
+    },
+
+
+    /*
+    * 
+    * Main watch task for development
+    * ==========================================================================
+    */
     watch : {
       options: {
         reload: true, 
@@ -106,16 +209,24 @@ module.exports = function(grunt) {
       //     livereload: true
       //   }
       // },
+      font: {
+        files: ['dev/fonts/*.*'],
+        tasks: ['copy:fonts']
+      },
+      images: {
+        files: ['dev/img/**/*.*', '!dev/img/sprites'],
+        tasks: ['copy:images']
+      },
       js: {
         files: ['dev/js/*.js'],
-        tasks: ['uglify:build'],
+        tasks: ['uglify:dev'],
         options: {
           livereload: true
         }
       },
       css: {
         files: ['dev/sass/**/*.scss'],
-        tasks: ['sass:build'],
+        tasks: ['sass:dev'],
         options: {
           livereload: true
         }
@@ -126,41 +237,17 @@ module.exports = function(grunt) {
           livereload: true
         }
       },
-    },
-
-    // Compiles png in specified folder to spritesheet and produces necessary
-    // css for include into main scss file
-    sprite:{
-      all: {
-        src: 'dev/img/icons/*.png',
-        dest: 'dev/img/icons_sprite.png',
-        destCss: 'dev/sass/_includes/_icons.scss'
-      }
-    },
-    // grunt-express will serve the files from the folders listed in `bases`
-    // on specified `port` and `hostname`
-    express: {
-      all: {
-        options: {
-          port: 9000,
-          hostname: "127.0.0.1",
-          bases: "dist",
-          livereload: true 
-        }
-      }
-    },
- 
-    // grunt-open will open your browser at the project's URL
-    open: {
-      all: {
-        // Gets the port from the connect configuration
-        path: 'http://localhost:<%= express.all.options.port%>'
-      }
     }
 
   });
 
-  // Load the plugins  
+
+
+  /*
+  * ==========================================================================
+  * Load Plugins
+  * ==========================================================================
+  */  
   grunt.loadNpmTasks('grunt-spritesmith');      // 'sprite'
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-uglify');   // 'uglify:dev or uglify:build'
@@ -170,11 +257,17 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-open');
   grunt.loadNpmTasks('grunt-express');  
   grunt.loadNpmTasks('grunt-contrib-copy'); 
+  grunt.loadNpmTasks('grunt-contrib-clean');
  
   
   
-  // Register task(s)
+  /*
+  * ==========================================================================
+  * Register Grunt Tasks
+  * ==========================================================================
+  */
   grunt.registerTask('default', ['zetzer', 'uglify:dev', 'sprite', 'sass:dev']);
-  grunt.registerTask('build', ['zetzer', 'uglify:build', 'sprite', 'sass:build']);
+  grunt.registerTask('build_dist', ['zetzer', 'uglify:build', 'sprite', 'sass:build']);
+  grunt.registerTask('build_dev', ['zetzer', 'uglify:build', 'sprite', 'sass:build']);
   grunt.registerTask('server', ['express','open','express-keepalive']);
 };
