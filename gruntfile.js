@@ -54,12 +54,11 @@ module.exports = function(grunt) {
   				preserveComments: 'all'
 
   			},
-        //src: ['dev/js/*.js', '!dev/js/jquery', '!dev/js/emailer'],
-  			src: ['dev/js/includes/**/*.js','dev/js/*.js', '!dev/js/emailer'],
+  			src: ['dev/js/includes/**/*.js','dev/js/*.js', '!dev/js/emailer/**/*.*'],
   			dest: 'dist/js/main.min.js'
   		},
       build: {
-        src: ['dev/js/includes/**/*.js','dev/js/*.js', '!dev/js/emailer'],
+        src: ['dev/js/includes/**/*.js','dev/js/*.js', '!dev/js/emailer/**/*.*'],
         dest: 'dist/js/main.min.js'
       }
   	},
@@ -96,24 +95,16 @@ module.exports = function(grunt) {
     * ==========================================================================
     */
     copy: {
-      main: {
-        files: [
-          // flattens results to a single level 
-          {expand: true, flatten: true, src: ['dev/fonts/**'], dest: 'dist/fonts/', filter: 'isFile'},
-           // flattens results to a single level 
-          {expand: true, flatten: true, src: ['dev/img/**', '!dev/img/sprite/'], dest: 'dist/img/', filter: 'isFile'},
-        ],
-      },
       images: {
         files: [
            // flattens results to a single level 
-          {expand: true, flatten: true, src: ['dev/img/**', '!dev/img/sprite/'], dest: 'dist/img/', filter: 'isFile'},
+          {expand: true, flatten: false, cwd: 'dev/img', src: ['**/*.*', '!sprites/**/*.*'], dest: 'dist/img', filter: 'isFile'},
         ],
       },
       fonts: {
         files: [
           // flattens results to a single level 
-          {expand: true, flatten: true, src: ['dev/fonts/**'], dest: 'dist/fonts/', filter: 'isFile'},
+          {expand: true, flatten: false, cwd: 'dev/fonts', src: ['*.*'], dest: 'dist/fonts', filter: 'isFile'},
         ],
       },
     },
@@ -136,11 +127,21 @@ module.exports = function(grunt) {
     * ==========================================================================
     */
     sprite:{
-      all: {
-        src: 'dev/img/sprites/**/*.png',
+      // all: {
+      //   src: 'dev/img/sprites/**/*.png',
+      //   dest: 'dev/img/icons_sprite.png',
+      //   destCss: 'dev/sass/_includes/_icons.scss'
+      // },
+      icons: {
+        src: 'dev/img/sprites/icons**/*.png',
         dest: 'dev/img/icons_sprite.png',
-        destCss: 'dev/sass/_includes/_icons.scss'
+        destCss: 'dev/sass/_includes/sprites/_icons.scss'
       },
+      // logos: {
+      //   src: 'dev/img/sprites/logos**/*.png',
+      //   dest: 'dev/img/icons_sprite.png',
+      //   destCss: 'dev/sass/_includes/_logos.scss'
+      // },
     },
 
 
@@ -178,11 +179,16 @@ module.exports = function(grunt) {
     /*
     * 
     * Clean removes all files and folders from specified directory
+    * Be sure to stop all other tasks before running this
     * ==========================================================================
     */
     clean: {
-      build: ["dist"],
-      //release: ["path/to/another/dir/one", "path/to/another/dir/two"]
+      build: {
+        src: ["dist/**"],
+        options: {
+          force: true 
+        } 
+      }
     },
 
 
@@ -214,11 +220,11 @@ module.exports = function(grunt) {
         tasks: ['copy:fonts']
       },
       images: {
-        files: ['dev/img/**/*.*', '!dev/img/sprites'],
+        files: ['dev/img/**/*.*', '!dev/img/sprites/**/*.*'],
         tasks: ['copy:images']
       },
       js: {
-        files: ['dev/js/*.js'],
+        files: ['dev/js/*.js', '!dev/js/emailer/**/*.*'],
         tasks: ['uglify:dev'],
         options: {
           livereload: true
@@ -266,8 +272,12 @@ module.exports = function(grunt) {
   * Register Grunt Tasks
   * ==========================================================================
   */
-  grunt.registerTask('default', ['zetzer', 'uglify:dev', 'sprite', 'sass:dev']);
-  grunt.registerTask('build_dist', ['zetzer', 'uglify:build', 'sprite', 'sass:build']);
-  grunt.registerTask('build_dev', ['zetzer', 'uglify:build', 'sprite', 'sass:build']);
-  grunt.registerTask('server', ['express','open','express-keepalive']);
+
+  grunt.registerTask('build_dev', ['zetzer', 'uglify:dev', 'sprite', 'sass:dev', 'copy']);
+  grunt.registerTask('build_prod', ['clean', 'zetzer', 'uglify:build', 'sprite', 'sass:build', 'copy']);
+  
+  // Run watch before server for LiveReload
+  grunt.registerTask('server', ['build_dev', 'express', 'open', 'express-keepalive']);
+  
+  grunt.registerTask('default', ['watch']);
 };
