@@ -35,6 +35,7 @@ Main content styles
 	background-color: $third-bg-color;	
 }
 #skills {
+	@extend %clearfix;
 	background-color: $second-bg-color;
 	color: $second-font-color;
 	h2 {
@@ -43,8 +44,8 @@ Main content styles
 		}
 	}
 	> div {
-		-webkit-perspective: 1200px;
-				perspective: 1200px;
+		// -webkit-perspective: 1200px;
+		// 		perspective: 1200px;
 		@media ($tablet-min) {
 			padding-left: 100px;
 			padding-right: 100px;	
@@ -185,10 +186,9 @@ Main content styles
 		font-size: 0.8em;
 		margin: 1px;
 		border: $third-border;
-		
 		display: inline-block;
 		@media ($desktop-min) {
-			//line-height: 1;
+
 		}
 		&:hover {
 			color: $base-bg-color;
@@ -223,6 +223,7 @@ Main content styles
 		@include scale(0.5);
 		display: inline-block;
 		width: 25%;
+		margin: -2px;
 		text-align: center;
 		@media ($tablet-min) {
 			@include scale(1);
@@ -282,6 +283,8 @@ Main content styles
 .mobile-container {
 	@include border-radius(10px);
 	@extend %clearfix;
+	-webkit-perspective: 1200px;
+			perspective: 1200px;
 	padding: 5px;
 	border: 5px solid $base-brand-color;
 	@media ($tablet-min){
@@ -300,7 +303,7 @@ Main content styles
 }
 .icon-container {
 	display: none;
-	
+	@extend %clearfix;
 	@media ($tablet-min){
 		display: block;
 		background-color: $base-bg-color;
