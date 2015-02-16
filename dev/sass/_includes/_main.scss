@@ -17,14 +17,17 @@ Main content styles
 		min-height: 600px;
 	}
 	h1 {
-		text-shadow: -1px 0 $medium-gray, 0 1px $medium-gray, 1px 0 $light-gray, 0 -1px $light-gray;
+		//text-shadow: -1px 0 $medium-gray, 0 1px $medium-gray, 1px 0 $light-gray, 0 -1px $light-gray;
 		font-size: $h1-font-size;
 		text-align: right;
 		@media ($tablet-min) {
 			//font-size: $h1-font-size;
 		}
 		span {
-			display: block;
+			@include border-radius;
+			background-color: #fafafa;
+			padding: 8px 22px 0px 22px;
+			line-height: 1;
 		}
 	}
 
@@ -164,7 +167,8 @@ Main content styles
 		background-color: $base-bg-color;
 		display: inline-block;
 		width: 25px;
-		height: 25px
+		height: 25px;
+		padding: 0;
 		//margin-right: 100%;
 	}
 
