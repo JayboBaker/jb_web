@@ -19,6 +19,7 @@ Main content styles
 	h1 {
 		text-shadow: -1px 0 $medium-gray, 0 1px $medium-gray, 1px 0 $light-gray, 0 -1px $light-gray;
 		font-size: $h1-font-size;
+		text-align: right;
 		@media ($tablet-min) {
 			//font-size: $h1-font-size;
 		}
@@ -89,8 +90,8 @@ Main content styles
 	position: relative;
 	@media ($tablet-min) { 
 		background-color: $base-brand-color;
-		@include border-radius(50%);
-		padding: 6em 20% 6em 20%;
+		border-radius: 25%;
+		padding: 5em 7em 4em 7em;
 	}
 	&:after {
 
@@ -174,7 +175,7 @@ Main content styles
 	font-size: $base-font-size * 4;
 	position: absolute;
 	padding: $base-padding;
-	bottom: 0;
+	bottom: 20px;
 	width:100%;
 
 	a {
