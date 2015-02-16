@@ -171,6 +171,23 @@ module.exports = function(grunt) {
 
     /*
     * 
+    * Minifies images
+    * ==========================================================================
+    */
+    imagemin: {                           
+      dynamic: {                           
+        files: [{
+          expand: true,                   // Enable dynamic expansion 
+          cwd: 'dist/',                   // Src matches are relative to this path 
+          src: ['**/*.{png,jpg,gif}'],    // Actual patterns to match 
+          dest: 'dist'                // Destination path prefix 
+        }]
+      }
+    },
+
+
+    /*
+    * 
     * grunt-express will serve the files from the folders listed in `bases`
     * on specified `port` and `hostname`
     * ==========================================================================
@@ -330,6 +347,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy'); 
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-autoprefixer');
+  grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-contrib-compress');
  
   
@@ -340,7 +358,7 @@ module.exports = function(grunt) {
   * ==========================================================================
   */
 
-  grunt.registerTask('build_dev', ['zetzer', 'uglify:dev', 'sprite', 'sass:dev', 'copy']);
+  grunt.registerTask('build_dev', ['zetzer:dev', 'uglify:dev', 'sprite', 'sass:dev', 'copy']);
   grunt.registerTask('build_prod', ['clean', 'zetzer:build', 'uglify:build', 'sprite', 'sass:build', 'autoprefixer', 'copy']);
   
   // Run watch before server for LiveReload
