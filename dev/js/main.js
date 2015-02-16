@@ -54,7 +54,7 @@ $(document).ready(function(){
   Parallax Image
   =========================================================================== */
   var parallax = document.querySelectorAll(".parallax"),
-  speed = 0.4;
+  speed = 0.35;
  
   window.onscroll = function(){
     [].slice.call(parallax).forEach(function(el,i){
@@ -108,6 +108,20 @@ $(document).ready(function(){
       }
     }); // end sendEmail 
   }); // end submit
+
+  if(!Modernizr.input.placeholder){
+    $("input, textarea").each(function(){
+      if($(this).val()=="" && $(this).attr("placeholder")!=""){
+        $(this).val($(this).attr("placeholder"));
+        $(this).focus(function(){
+          if($(this).val()==$(this).attr("placeholder")) $(this).val("");
+        });
+        $(this).blur(function(){
+          if($(this).val()=="") $(this).val($(this).attr("placeholder"));
+        });
+      }
+    });
+  }
 }); // end doc ready
 
 
