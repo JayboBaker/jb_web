@@ -198,6 +198,7 @@ Main content styles
 		}
 		&:hover {
 			color: $base-bg-color;
+			border-color: $base-brand-color;
 			background-color: $base-brand-color;
 		}
 	}
