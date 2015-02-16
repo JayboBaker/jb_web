@@ -36,6 +36,9 @@ header {
 			color: $base-link-color;	
 		}
 	}
+	.nav-container {
+		position: relative;
+	}
 	.github-ribbon {
 		img {
 			 position: absolute; 
@@ -51,12 +54,14 @@ header {
 		right: -250px;
 		width: 250px;
 		height: 100%;
+		max-width: 250px;
+		left: auto;
 		background: $second-bg-color;
 		z-index: 100;
 		padding: $base-padding;
 		border-left: $section-border;
 		@media ($tablet-min) {
-			position: initial;
+			position: static;
 			height: initial;
 			width: 100%;
 			right: initial;
