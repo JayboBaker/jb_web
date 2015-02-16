@@ -357,12 +357,15 @@ module.exports = function(grunt) {
   * Register Grunt Tasks
   * ==========================================================================
   */
-
+  // build creates production ready site
+  grunt.registerTask('build', ['clean', 'zetzer:build', 'uglify:build', 'sprite', 'sass:build', 'autoprefixer', 'copy']);
+  // build_dev creates development version of site. Unminified with comments. Excludes vendor prefixes
   grunt.registerTask('build_dev', ['zetzer:dev', 'uglify:dev', 'sprite', 'sass:dev', 'copy']);
-  grunt.registerTask('build_prod', ['clean', 'zetzer:build', 'uglify:build', 'sprite', 'sass:build', 'autoprefixer', 'copy']);
+  // watch keeps track of changes during devlopment
+  grunt.registerTask('default', ['build_dev', 'watch']);
   
-  // Run watch before server for LiveReload
+  // ATTENTION! Run watch before server for LiveReload
   grunt.registerTask('server', ['build_dev', 'express', 'open', 'express-keepalive']);
   
-  grunt.registerTask('default', ['build_dev', 'watch']);
+  
 };
