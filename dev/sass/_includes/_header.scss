@@ -36,7 +36,15 @@ header {
 			color: $base-link-color;	
 		}
 	}
-
+	.github-ribbon {
+		img {
+			 position: absolute; 
+			 top: 0; 
+			 left: 0; 
+			 border: 0; 
+			 z-index: 2;
+		}
+	}
 	.main-menu {
 		position: fixed;
 		top: 0;
@@ -63,6 +71,7 @@ header {
 		border-bottom: 4px solid $base-border-color;
 		line-height: $base-line-height;
 		margin-top: 18px;
+		padding-left: $base-padding;
 		font-weight: inherit;
 		@media ($tablet-min) { 
 			display: none;
@@ -96,17 +105,20 @@ header {
 		}
 	}
 	.main-menu ul li {
+
 		border-top: $base-border;
 		border-bottom: $base-border;
+
 		@media ($tablet-min) { 
 			display: inline-block;
 		}
 	}
 	.main-menu ul li a {
+		@include border-radius;
 		@include transition(0.5s);
 		position: relative;
 		display: block;
-		padding: 6px 6px 1px 6px;
+		padding: 9px 11px 7px 10px;
 		text-decoration: none;
 	}
 	.main-menu .nav-links li a:hover {
@@ -124,6 +136,7 @@ header {
 		display: inline-block;
 		font-size: $h3-font-size;
 		padding-top: $base-padding / 2;
+		padding-left: 105px;
 		span {
 			display: none;
 			@media ($tablet-min) { 
