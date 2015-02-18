@@ -26,8 +26,11 @@ Main content styles
 		span {
 			@include border-radius;
 			background-color: #fafafa;
-			padding: 8px 22px 0px 22px;
 			line-height: 1;
+			padding: 8px 5px 0px 5px;
+			@media ($tablet-min) {
+				padding: 8px 22px 0px 22px;
+			}
 		}
 	}
 
