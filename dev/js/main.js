@@ -26,6 +26,21 @@ $(document).ready(function(){
 		}
 	});
 
+	$('.main-menu .scroll-link').on('click', function(event){
+		// create menu variables
+		var slideoutMenu = $('.main-menu');
+		var slideoutMenuWidth = $('.main-menu').width();
+
+		// toggle open class
+		slideoutMenu.toggleClass("open");
+
+		// slide menu
+		if (!slideoutMenu.hasClass("open")) {
+			slideoutMenu.animate({
+				right: "-250px"
+		 });  
+		}
+	});
 
 	/* ===========================================================================
 	Scroll down page functionality
