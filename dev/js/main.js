@@ -60,13 +60,17 @@ $(document).ready(function(){
 	Parallax Image
 	=========================================================================== */
 	var parallax = document.querySelectorAll(".parallax"),
-	speed = 0.35;
+	speed = 0.11;
  
 	window.onscroll = function(){
 		[].slice.call(parallax).forEach(function(el,i){
 
 			var windowYOffset = window.pageYOffset,
-			elBackgrounPos = "50% " + (windowYOffset * speed) + "%";
+			windowYOffset = windowYOffset * speed;
+			if (windowYOffset > 100) {
+				windowYOffset = 100;
+			}
+			elBackgrounPos = "50% " + (windowYOffset) + "%";
 			el.style.backgroundPosition = elBackgrounPos;
 
 		});

@@ -23,10 +23,15 @@ section.module.content {
 }
 section.module.parallax {
   // height: 600px;
-  background-position: 50% 50%;
   background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover; // for desktop
+  background-attachment: scroll;
+  background-position: 50% 0;
+
+  @media ($tablet-min) {
+
+  background-attachment: scroll;
+  background-size: cover;
+  }// for desktop
 }
 // section.module.parallax h1 {
 //   color: rgba(255, 255, 255, 0.8);
